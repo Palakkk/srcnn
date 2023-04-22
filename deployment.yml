@@ -1,0 +1,33 @@
+api-version: 2019-12-01
+location: centralindia
+name: srcnn
+properties:
+  containers:
+  - name: streamlitapp
+    properties:
+      image: registry.azurecr.io/cloud_project:v1
+      ports:
+      - port: 80
+        protocol: TCP
+      - port: 443
+        protocol: TCP
+      resources:
+        requests:
+          cpu: 2.0
+          memoryInGB: 1.5
+  imageRegistryCredentials:
+  - server: registry110.azurecr.io
+    username: registry110
+    password: REDACTED
+  restartPolicy: Never
+  ipAddress:
+    ports:
+    - port: 443
+      protocol: TCP
+    - port: 80
+      protocol: TCP
+    type: Public
+    dnsNameLabel: srcnn
+  osType: Linux
+tags: null
+type: Microsoft.ContainerInstance/containerGroups
